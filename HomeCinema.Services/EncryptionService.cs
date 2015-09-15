@@ -8,7 +8,7 @@ using HomeCinema.Services.Abstract;
 
 namespace HomeCinema.Services
 {
-    class EncryptionService:IEncryptionService
+    public class EncryptionService:IEncryptionService
     {
         public string CreateSalt()
         {

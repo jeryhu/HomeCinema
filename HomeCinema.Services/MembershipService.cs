@@ -12,7 +12,7 @@ using HomeCinema.Services.Abstract;
 
 namespace HomeCinema.Services
 {
-    class MembershipService:IMembershipService
+    public class MembershipService:IMembershipService
     {
         #region Variables
         private readonly IEntityBaseRepository<User> _userRepository;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HomeCinema.Services.Abstract
 {
-    interface IEncryptionService
+    public interface IEncryptionService
     {
         string CreateSalt();
         string EncryptPassword(string password, string salt);
