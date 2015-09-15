@@ -30,7 +30,7 @@ namespace HomeCinema.Web.Infrastructure.Validators
             RuleFor(movie => movie.Rating).InclusiveBetween((byte)0, (byte)5)
                 .WithMessage("Rating must be less than or equal to 5");
 
-            RuleFor(movie => movie.TrailerURI).NotEmpty().Must(ValidTrailerURI)
+            RuleFor(movie => movie.TrailerUrl).NotEmpty().Must(ValidTrailerURI)
                 .WithMessage("Only Youtube Trailers are supported");
         }
 
