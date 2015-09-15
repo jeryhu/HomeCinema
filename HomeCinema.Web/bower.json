@@ -1,0 +1,33 @@
+{
+  "name": "HomeCinema.Web",
+  "version": "1.0.0",
+  "homepage": "https://github.com/stewart-itopia/HomeCinema",
+  "authors": [
+    "Stewart Mbofana <stewart@itopia.co.za>"
+  ],
+  "description": "Home Cinema Project",
+  "keywords": [
+    "homecinema"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angucomplete-alt": "~1.1.1",
+    "angular-base64": "~2.0.5",
+    "angular-file-upload": "~2.1.4"
+  },
+  "devDependencies": {
+    "angular-base64": "~2.0.5",
+    "angular-bootstrap": "~0.13.4",
+    "angular-file-upload": "~2.1.4",
+    "angular-loading-bar": "~0.8.0",
+    "raty": "~2.7.0",
+    "tg-angular-validator": "~1.2.7"
+  }
+}
