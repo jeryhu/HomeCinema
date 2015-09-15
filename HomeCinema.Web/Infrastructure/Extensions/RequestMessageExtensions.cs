@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http.Dependencies;
+using HomeCinema.Data.Repositories;
+using HomeCinema.Entities;
 using HomeCinema.Services.Abstract;
 
 namespace HomeCinema.Web.Infrastructure.Extensions
@@ -22,6 +24,11 @@ namespace HomeCinema.Web.Infrastructure.Extensions
             TService service = (TService)dependencyScope.GetService(typeof(TService));
 
             return service;
+        }
+
+        internal static IEntityBaseRepository<T> GetDataRepository<T>(this HttpRequestMessage request) where T : class, IEntityBase, new()
+        {
+            return request.GetService<IEntityBaseRepository<T>>();
         }
     }
 }

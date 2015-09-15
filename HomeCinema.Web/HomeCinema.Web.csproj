@@ -3758,11 +3758,41 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\RentalsExtendedController.cs" />
+    <Compile Include="Controllers\GenresController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
+    <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Core\ApiControllerBase.cs" />
+    <Compile Include="Infrastructure\Core\ApiControllerBaseExtended.cs" />
+    <Compile Include="Infrastructure\Core\DataRepositoryFactory.cs" />
+    <Compile Include="Infrastructure\Core\FileUploadResult.cs" />
+    <Compile Include="Infrastructure\Core\MimeMultipart.cs" />
+    <Compile Include="Infrastructure\Core\PaginationSet.cs" />
+    <Compile Include="Infrastructure\Extensions\EntitiesExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\RequestMessageExtensions.cs" />
+    <Compile Include="Infrastructure\Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Infrastructure\Mappings\DomainToViewModelMappingProfile.cs" />
     <Compile Include="Infrastructure\MessageHandlers\HomeCinemaAuthHandler.cs" />
+    <Compile Include="Infrastructure\Validators\AccountViewModelValidators.cs" />
+    <Compile Include="Infrastructure\Validators\CustomerViewModelValidator.cs" />
+    <Compile Include="Infrastructure\Validators\MovieViewModelValidator.cs" />
+    <Compile Include="Infrastructure\Validators\StockViewModelValidator.cs" />
+    <Compile Include="Models\CustomerViewModel.cs" />
+    <Compile Include="Models\GenreViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\MovieViewModel.cs" />
+    <Compile Include="Models\RegistrationViewModel.cs" />
+    <Compile Include="Models\RentalHistoryViewModel.cs" />
+    <Compile Include="Models\RentalViewModel.cs" />
+    <Compile Include="Models\StockViewModel.cs" />
+    <Compile Include="Models\TotalRentalHistoryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -5840,6 +5870,7 @@
     <Content Include="Scripts\vendor\underscore\README.md" />
     <Content Include="Scripts\vendor\underscore\underscore-min.map" />
     <Content Include=".bowerrc" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5853,8 +5884,12 @@
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\images\movies\" />
     <Folder Include="Content\images\raty\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Customers\" />
+    <Folder Include="Views\Default\" />
+    <Folder Include="Views\Movies\" />
+    <Folder Include="Views\Rentals\" />
+    <Folder Include="Views\Stocks\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HomeCinema.Data\HomeCinema.Data.csproj">

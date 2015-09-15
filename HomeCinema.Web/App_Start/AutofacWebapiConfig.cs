@@ -13,6 +13,7 @@ using HomeCinema.Data.Infrastructure;
 using HomeCinema.Data.Repositories;
 using HomeCinema.Services;
 using HomeCinema.Services.Abstract;
+using HomeCinema.Web.Infrastructure.Core;
 
 namespace HomeCinema.Web.App_Start
 {
@@ -58,6 +59,9 @@ namespace HomeCinema.Web.App_Start
             builder.RegisterType<MembershipService>()
                 .As<IMembershipService>()
                 .InstancePerRequest();
+
+            builder.RegisterType<DataRepositoryFactory>()
+               .As<IDataRepositoryFactory>().InstancePerRequest();
 
             Container = builder.Build();
 
