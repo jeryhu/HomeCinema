@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
 using HomeCinema.Web.Models;
 
 namespace HomeCinema.Web.Infrastructure.Validators
@@ -27,7 +22,7 @@ namespace HomeCinema.Web.Infrastructure.Validators
             RuleFor(movie => movie.Description).NotEmpty()
                 .WithMessage("Select a description");
 
-            RuleFor(movie => movie.Rating).InclusiveBetween((byte)0, (byte)5)
+            RuleFor(movie => movie.Rating).InclusiveBetween((byte) 0, (byte) 5)
                 .WithMessage("Rating must be less than or equal to 5");
 
             RuleFor(movie => movie.TrailerUrl).NotEmpty().Must(ValidTrailerURI)
@@ -36,7 +31,8 @@ namespace HomeCinema.Web.Infrastructure.Validators
 
         private bool ValidTrailerURI(string trailerURI)
         {
-            return (!string.IsNullOrEmpty(trailerURI) && trailerURI.ToLower().StartsWith("https://www.youtube.com/watch?"));
+            return (!string.IsNullOrEmpty(trailerURI) &&
+                    trailerURI.ToLower().StartsWith("https://www.youtube.com/watch?"));
         }
     }
 }

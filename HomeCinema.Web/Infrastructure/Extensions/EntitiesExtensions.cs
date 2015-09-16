@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HomeCinema.Entities;
 using HomeCinema.Web.Models;
 
@@ -19,8 +15,11 @@ namespace HomeCinema.Web.Infrastructure.Extensions
             customer.DateOfBirth = customerVm.DateOfBirth;
             customer.Email = customerVm.Email;
             customer.UniqueKey = (customerVm.UniqueKey == null || customerVm.UniqueKey == Guid.Empty)
-                ? Guid.NewGuid() : customerVm.UniqueKey;
-            customer.RegistrationDate = (customer.RegistrationDate == DateTime.MinValue ? DateTime.Now : customerVm.RegistrationDate);
+                ? Guid.NewGuid()
+                : customerVm.UniqueKey;
+            customer.RegistrationDate = (customer.RegistrationDate == DateTime.MinValue
+                ? DateTime.Now
+                : customerVm.RegistrationDate);
         }
 
         public static void UpdateMovie(this Movie movie, MovieViewModel movieVm)

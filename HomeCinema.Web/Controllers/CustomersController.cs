@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using HomeCinema.Data.Infrastructure;
@@ -31,14 +30,14 @@ namespace HomeCinema.Web.Controllers
         [Route("search/{page:int=0}/{pageSize=4}/{filter?}")]
         public HttpResponseMessage Search(HttpRequestMessage request, int? page, int? pageSize, string filter = null)
         {
-            int currentPage = page.Value;
-            int currentPageSize = pageSize.Value;
+            var currentPage = page.Value;
+            var currentPageSize = pageSize.Value;
 
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 List<Customer> customers = null;
-                int totalMovies = new int();
+                var totalMovies = new int();
 
                 if (!string.IsNullOrEmpty(filter))
                 {
@@ -47,8 +46,8 @@ namespace HomeCinema.Web.Controllers
                     customers = _customersRepository.GetAll()
                         .OrderBy(c => c.Id)
                         .Where(c => c.LastName.ToLower().Contains(filter) ||
-                            c.IdentityCard.ToLower().Contains(filter) ||
-                            c.FirstName.ToLower().Contains(filter))
+                                    c.IdentityCard.ToLower().Contains(filter) ||
+                                    c.FirstName.ToLower().Contains(filter))
                         .ToList();
                 }
                 else
@@ -57,21 +56,21 @@ namespace HomeCinema.Web.Controllers
                 }
 
                 totalMovies = customers.Count();
-                customers = customers.Skip(currentPage * currentPageSize)
-                        .Take(currentPageSize)
-                        .ToList();
+                customers = customers.Skip(currentPage*currentPageSize)
+                    .Take(currentPageSize)
+                    .ToList();
 
-                IEnumerable<CustomerViewModel> customersVM = Mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerViewModel>>(customers);
+                var customersVM = Mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerViewModel>>(customers);
 
-                PaginationSet<CustomerViewModel> pagedSet = new PaginationSet<CustomerViewModel>()
+                var pagedSet = new PaginationSet<CustomerViewModel>
                 {
                     Page = currentPage,
                     TotalCount = totalMovies,
-                    TotalPages = (int)Math.Ceiling((decimal)totalMovies / currentPageSize),
+                    TotalPages = (int) Math.Ceiling((decimal) totalMovies/currentPageSize),
                     Items = customersVM
                 };
 
-                response = request.CreateResponse<PaginationSet<CustomerViewModel>>(HttpStatusCode.OK, pagedSet);
+                response = request.CreateResponse(HttpStatusCode.OK, pagedSet);
 
                 return response;
             });
@@ -89,11 +88,11 @@ namespace HomeCinema.Web.Controllers
                 {
                     response = request.CreateResponse(HttpStatusCode.BadRequest,
                         ModelState.Keys.SelectMany(k => ModelState[k].Errors)
-                              .Select(m => m.ErrorMessage).ToArray());
+                            .Select(m => m.ErrorMessage).ToArray());
                 }
                 else
                 {
-                    Customer _customer = _customersRepository.GetSingle(customer.ID);
+                    var _customer = _customersRepository.GetSingle(customer.ID);
                     _customer.UpdateCustomer(customer);
 
                     _unitOfWork.Commit();

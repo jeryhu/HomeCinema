@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using HomeCinema.Data.Extensions;
@@ -20,6 +17,7 @@ namespace HomeCinema.Web.Controllers
     public class StocksController : ApiControllerBase
     {
         private readonly IEntityBaseRepository<Stock> _stocksRepository;
+
         public StocksController(IEntityBaseRepository<Stock> stocksRepository,
             IEntityBaseRepository<Error> _errorsRepository, IUnitOfWork _unitOfWork)
             : base(_errorsRepository, _unitOfWork)
@@ -38,9 +36,9 @@ namespace HomeCinema.Web.Controllers
 
                 stocks = _stocksRepository.GetAvailableItems(id);
 
-                IEnumerable<StockViewModel> stocksVM = Mapper.Map<IEnumerable<Stock>, IEnumerable<StockViewModel>>(stocks);
+                var stocksVM = Mapper.Map<IEnumerable<Stock>, IEnumerable<StockViewModel>>(stocks);
 
-                response = request.CreateResponse<IEnumerable<StockViewModel>>(HttpStatusCode.OK, stocksVM);
+                response = request.CreateResponse(HttpStatusCode.OK, stocksVM);
 
                 return response;
             });

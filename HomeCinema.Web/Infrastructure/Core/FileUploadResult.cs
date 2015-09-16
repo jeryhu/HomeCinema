@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HomeCinema.Web.Infrastructure.Core
+﻿namespace HomeCinema.Web.Infrastructure.Core
 {
     public class FileUploadResult
     {

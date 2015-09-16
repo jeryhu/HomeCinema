@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HomeCinema.Web.Infrastructure.Validators;
 
 namespace HomeCinema.Web.Models
@@ -14,12 +11,11 @@ namespace HomeCinema.Web.Models
         public string Password { get; set; }
         public string Email { get; set; }
 
-
-     IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             var validator = new RegistrationViewModelValidator();
             var result = validator.Validate(this);
-            return result.Errors.Select(item => new ValidationResult(item.ErrorMessage, new[] { item.PropertyName }));
+            return result.Errors.Select(item => new ValidationResult(item.ErrorMessage, new[] {item.PropertyName}));
         }
     }
 }
