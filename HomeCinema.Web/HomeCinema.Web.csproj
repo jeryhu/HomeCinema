@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -24,7 +24,6 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,12 +43,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Integration.WebApi, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -73,10 +73,16 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -98,8 +104,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -124,9 +130,6 @@
     </Reference>
     <Reference Include="System.Web.Mvc">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -163,6 +166,46 @@
     <Content Include="bin\System.Web.Webpages.Deployment.dll" />
     <Content Include="bin\System.Web.Webpages.dll" />
     <Content Include="bin\System.Web.Webpages.Razor.dll" />
+    <Content Include="Content\css\blank.gif" />
+    <Content Include="Content\css\bootstrap-theme.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\fancybox_overlay.png" />
+    <Content Include="Content\css\fancybox_sprite.png" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\jquery.fancybox.css" />
+    <Content Include="Content\css\loading-bar.css" />
+    <Content Include="Content\css\morris.css" />
+    <Content Include="Content\css\site.css" />
+    <Content Include="Content\css\toastr.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\background.jpg" />
+    <Content Include="Content\images\movies\antman.jpg" />
+    <Content Include="Content\images\movies\background.jpg" />
+    <Content Include="Content\images\movies\batmanvssuperman.jpg" />
+    <Content Include="Content\images\movies\betafish.jpg" />
+    <Content Include="Content\images\movies\edgeoftomorrow.jpg" />
+    <Content Include="Content\images\movies\fantasticfour.jpg" />
+    <Content Include="Content\images\movies\home.jpg" />
+    <Content Include="Content\images\movies\insideout.jpg" />
+    <Content Include="Content\images\movies\jurassicworld.jpg" />
+    <Content Include="Content\images\movies\madmax.jpg" />
+    <Content Include="Content\images\movies\minions.jpg" />
+    <Content Include="Content\images\movies\southpaw.jpg" />
+    <Content Include="Content\images\movies\spectre.jpg" />
+    <Content Include="Content\images\movies\ted2.jpg" />
+    <Content Include="Content\images\movies\thelongestride.jpg" />
+    <Content Include="Content\images\movies\thewalkingdead.jpg" />
+    <Content Include="Content\images\movies\trainwreck.jpg" />
+    <Content Include="Content\images\movies\truedetective.jpg" />
+    <Content Include="Content\images\movies\unknown.jpg" />
+    <Content Include="Content\images\movies\Wallpaper 8.png" />
+    <Content Include="Content\images\raty\star-half-big.png" />
+    <Content Include="Content\images\raty\star-half.png" />
+    <Content Include="Content\images\raty\star-off-big.png" />
+    <Content Include="Content\images\raty\star-off.png" />
+    <Content Include="Content\images\raty\star-on-big.png" />
+    <Content Include="Content\images\raty\star-on.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\spa\.gitattributes" />
     <Content Include="Scripts\spa\.gitignore" />
@@ -3425,6 +3468,11 @@
     <Content Include="Scripts\vendor\angular-bootstrap\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\vendor\angular-bootstrap\ui-bootstrap.js" />
     <Content Include="Scripts\vendor\angular-bootstrap\ui-bootstrap.min.js" />
+    <Content Include="Scripts\vendor\angular-cookies\angular-cookies.js" />
+    <Content Include="Scripts\vendor\angular-cookies\angular-cookies.min.js" />
+    <Content Include="Scripts\vendor\angular-cookies\index.js" />
+    <Content Include="Scripts\vendor\angular-cookie\angular-cookie.js" />
+    <Content Include="Scripts\vendor\angular-cookie\angular-cookie.min.js" />
     <Content Include="Scripts\vendor\angular-file-upload\.gitignore" />
     <Content Include="Scripts\vendor\angular-file-upload\dist\angular-file-upload.min.js" />
     <Content Include="Scripts\vendor\angular-file-upload\gulpfile.js" />
@@ -3453,6 +3501,16 @@
     <Content Include="Scripts\vendor\angular-mocks\ngAnimateMock.js" />
     <Content Include="Scripts\vendor\angular-mocks\ngMock.js" />
     <Content Include="Scripts\vendor\angular-mocks\ngMockE2E.js" />
+    <Content Include="Scripts\vendor\angular-route\angular-route.js" />
+    <Content Include="Scripts\vendor\angular-route\angular-route.min.js" />
+    <Content Include="Scripts\vendor\angular-route\index.js" />
+    <Content Include="Scripts\vendor\angular-validator\dist\angular-validator-rules.js" />
+    <Content Include="Scripts\vendor\angular-validator\dist\angular-validator-rules.min.js" />
+    <Content Include="Scripts\vendor\angular-validator\dist\angular-validator.js" />
+    <Content Include="Scripts\vendor\angular-validator\dist\angular-validator.min.js" />
+    <Content Include="Scripts\vendor\angular-validator\example\demo.js" />
+    <Content Include="Scripts\vendor\angular-validator\example\site.css" />
+    <Content Include="Scripts\vendor\angular-validator\index.html" />
     <Content Include="Scripts\vendor\angular\angular-csp.css" />
     <Content Include="Scripts\vendor\angular\angular.js" />
     <Content Include="Scripts\vendor\angular\angular.min.js" />
@@ -3750,7 +3808,36 @@
     <Content Include="Scripts\vendor\toastr\toastr.min.js" />
     <Content Include="Scripts\vendor\underscore\underscore-min.js" />
     <Content Include="Scripts\vendor\underscore\underscore.js" />
-    <Content Include="Web.config" />
+    <Content Include="Scripts\vendor\angular-cookies\.bower.json" />
+    <Content Include="Scripts\vendor\angular-cookies\angular-cookies.min.js.map" />
+    <Content Include="Scripts\vendor\angular-cookies\bower.json" />
+    <Content Include="Scripts\vendor\angular-cookies\package.json" />
+    <Content Include="Scripts\vendor\angular-cookies\README.md" />
+    <Content Include="Scripts\vendor\angular-validator\.bower.json" />
+    <Content Include="Scripts\vendor\angular-validator\bower.json" />
+    <Content Include="Scripts\vendor\angular-validator\example\data.json" />
+    <Content Include="Scripts\vendor\angular-validator\example\demo.coffee" />
+    <Content Include="Scripts\vendor\angular-validator\example\site.scss" />
+    <Content Include="Scripts\vendor\angular-validator\Gruntfile.coffee" />
+    <Content Include="Scripts\vendor\angular-validator\package.json" />
+    <Content Include="Scripts\vendor\angular-validator\README.md" />
+    <Content Include="Scripts\vendor\angular-validator\rules\default-rules.coffee" />
+    <Content Include="Scripts\vendor\angular-validator\src\directive.coffee" />
+    <Content Include="Scripts\vendor\angular-validator\src\module.coffee" />
+    <Content Include="Scripts\vendor\angular-validator\src\provider.coffee" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacWebapiConfig.cs" />
@@ -3785,6 +3872,9 @@
     <Compile Include="Infrastructure\Validators\CustomerViewModelValidator.cs" />
     <Compile Include="Infrastructure\Validators\MovieViewModelValidator.cs" />
     <Compile Include="Infrastructure\Validators\StockViewModelValidator.cs" />
+    <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Mappings\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="Mappings\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Models\CustomerViewModel.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -3797,8 +3887,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
-    <Content Include="packages.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="bower.json" />
     <Content Include="Scripts\spa\.bowerrc" />
     <Content Include="Scripts\spa\.editorconfig" />
@@ -5872,6 +5966,14 @@
     <Content Include="Scripts\vendor\underscore\underscore-min.map" />
     <Content Include=".bowerrc" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\vendor\angular-route\.bower.json" />
+    <Content Include="Scripts\vendor\angular-route\angular-route.min.js.map" />
+    <Content Include="Scripts\vendor\angular-route\bower.json" />
+    <Content Include="Scripts\vendor\angular-route\package.json" />
+    <Content Include="Scripts\vendor\angular-route\README.md" />
+    <Content Include="Scripts\vendor\angular-cookie\.bower.json" />
+    <Content Include="Scripts\vendor\angular-cookie\bower.json" />
+    <Content Include="Scripts\vendor\angular-cookie\package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5881,10 +5983,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\css\" />
-    <Folder Include="Content\fonts\" />
-    <Folder Include="Content\images\movies\" />
-    <Folder Include="Content\images\raty\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Customers\" />
     <Folder Include="Views\Default\" />
@@ -5936,7 +6034,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

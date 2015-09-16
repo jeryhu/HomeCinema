@@ -15,16 +15,15 @@ namespace HomeCinema.Web.App_Start
                 "~/Scripts/Vendors/modernizr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/vendors").Include(
-                //D:\Work\HomeCinema\HomeCinema.Web\Scripts\vendor\jquery\dist\jquery.js
-                "~/Scripts/vendor/jquery/dist/jquery.js",
+      "~/Scripts/vendor/jquery/dist/jquery.js",
                 "~/Scripts/vendor/bootstrap/dist/js/bootstrap.js",
                 "~/Scripts/vendor/toastr/toastr.js",
                 "~/Scripts/vendor/raty/lib/jquery.raty.js",
                 "~/Scripts/vendor/respond/src/respond.js",
                 "~/Scripts/vendor/angular/angular.js",
                 "~/Scripts/vendor/angular-route/angular-route.js",
-                "~/Scripts/vendor/angular-cookie/angular-cookies.js",
-                "~/Scripts/vendor/angular-validator/angular-validator.js",
+                "~/Scripts/vendor/angular-cookies/angular-cookies.js",
+                "~/Scripts/vendor/tg-angular-validator/dist/angular-validator.js",
                 "~/Scripts/vendor/angular-base64/angular-base64.js",
                 "~/Scripts/vendor/angular-file-upload/dist/angular-file-upload.min.js",
                 "~/Scripts/vendor/angucomplete-alt/angucomplete-alt.js",

@@ -60,8 +60,9 @@ namespace HomeCinema.Web.App_Start
                 .As<IMembershipService>()
                 .InstancePerRequest();
 
+            // Generic Data Repository Factory
             builder.RegisterType<DataRepositoryFactory>()
-               .As<IDataRepositoryFactory>().InstancePerRequest();
+                .As<IDataRepositoryFactory>().InstancePerRequest();
 
             Container = builder.Build();
 
