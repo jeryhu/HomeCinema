@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using HomeCinema.Data.Infrastructure;
@@ -19,13 +17,14 @@ namespace HomeCinema.Web.Controllers
     {
         public RentalsExtendedController(IDataRepositoryFactory dataRepositoryFactory, IUnitOfWork unitOfWork)
             : base(dataRepositoryFactory, unitOfWork)
-        { }
+        {
+        }
 
         [HttpPost]
         [Route("rent/{customerId:int}/{stockId:int}")]
         public HttpResponseMessage Rent(HttpRequestMessage request, int customerId, int stockId)
         {
-            _requiredRepositories = new List<Type>() { typeof(Customer), typeof(Stock), typeof(Rental) };
+            _requiredRepositories = new List<Type> {typeof (Customer), typeof (Stock), typeof (Rental)};
 
             return CreateHttpResponse(request, _requiredRepositories, () =>
             {
@@ -42,7 +41,7 @@ namespace HomeCinema.Web.Controllers
                 {
                     if (stock.IsAvailable)
                     {
-                        Rental _rental = new Rental()
+                        var _rental = new Rental
                         {
                             CustomerId = customerId,
                             StockId = stockId,
@@ -56,12 +55,13 @@ namespace HomeCinema.Web.Controllers
 
                         _unitOfWork.Commit();
 
-                        RentalViewModel rentalVm = Mapper.Map<Rental, RentalViewModel>(_rental);
+                        var rentalVm = Mapper.Map<Rental, RentalViewModel>(_rental);
 
-                        response = request.CreateResponse<RentalViewModel>(HttpStatusCode.Created, rentalVm);
+                        response = request.CreateResponse(HttpStatusCode.Created, rentalVm);
                     }
                     else
-                        response = request.CreateErrorResponse(HttpStatusCode.BadRequest, "Selected stock is not available anymore");
+                        response = request.CreateErrorResponse(HttpStatusCode.BadRequest,
+                            "Selected stock is not available anymore");
                 }
 
                 return response;

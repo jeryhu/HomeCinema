@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 using HomeCinema.Data.Infrastructure;
 using HomeCinema.Data.Repositories;
@@ -13,7 +9,7 @@ using HomeCinema.Entities;
 
 namespace HomeCinema.Web.Infrastructure.Core
 {
-    public class ApiControllerBase: ApiController
+    public class ApiControllerBase : ApiController
     {
         protected readonly IEntityBaseRepository<Error> _errorsRepository;
         protected readonly IUnitOfWork _unitOfWork;
@@ -50,7 +46,7 @@ namespace HomeCinema.Web.Infrastructure.Core
         {
             try
             {
-                Error _error = new Error()
+                var _error = new Error
                 {
                     Message = ex.Message,
                     StackTrace = ex.StackTrace,
@@ -60,7 +56,9 @@ namespace HomeCinema.Web.Infrastructure.Core
                 _errorsRepository.Add(_error);
                 _unitOfWork.Commit();
             }
-            catch { }
+            catch
+            {
+            }
         }
     }
 }

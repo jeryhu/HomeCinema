@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http.Dependencies;
+﻿using System.Net.Http;
 using HomeCinema.Data.Repositories;
 using HomeCinema.Entities;
 using HomeCinema.Services.Abstract;
@@ -20,13 +14,14 @@ namespace HomeCinema.Web.Infrastructure.Extensions
 
         private static TService GetService<TService>(this HttpRequestMessage request)
         {
-            IDependencyScope dependencyScope = request.GetDependencyScope();
-            TService service = (TService)dependencyScope.GetService(typeof(TService));
+            var dependencyScope = request.GetDependencyScope();
+            var service = (TService) dependencyScope.GetService(typeof (TService));
 
             return service;
         }
 
-        internal static IEntityBaseRepository<T> GetDataRepository<T>(this HttpRequestMessage request) where T : class, IEntityBase, new()
+        internal static IEntityBaseRepository<T> GetDataRepository<T>(this HttpRequestMessage request)
+            where T : class, IEntityBase, new()
         {
             return request.GetService<IEntityBaseRepository<T>>();
         }

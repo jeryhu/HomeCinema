@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using AutoMapper;
 using HomeCinema.Entities;
 using HomeCinema.Web.Models;
@@ -23,7 +19,8 @@ namespace HomeCinema.Web.Infrastructure.Mappings
                 .ForMember(vm => vm.GenreId, map => map.MapFrom(m => m.Genre.Id))
                 .ForMember(vm => vm.IsAvailable, map => map.MapFrom(m => m.Stocks.Any(s => s.IsAvailable)))
                 .ForMember(vm => vm.NumberOfStocks, map => map.MapFrom(m => m.Stocks.Count))
-                .ForMember(vm => vm.Image, map => map.MapFrom(m => string.IsNullOrEmpty(m.Image) == true ? "unknown.jpg" : m.Image));
+                .ForMember(vm => vm.Image,
+                    map => map.MapFrom(m => string.IsNullOrEmpty(m.Image) ? "unknown.jpg" : m.Image));
 
             Mapper.CreateMap<Genre, GenreViewModel>()
                 .ForMember(vm => vm.NumberOfMovies, map => map.MapFrom(g => g.Movies.Count()));

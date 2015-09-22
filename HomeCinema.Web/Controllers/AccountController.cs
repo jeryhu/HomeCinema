@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Mvc;
 using HomeCinema.Data.Infrastructure;
 using HomeCinema.Data.Repositories;
 using HomeCinema.Entities;
-using HomeCinema.Services;
 using HomeCinema.Services.Abstract;
 using HomeCinema.Web.Infrastructure.Core;
 using HomeCinema.Web.Models;
@@ -39,19 +34,19 @@ namespace HomeCinema.Web.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    MembershipContext _userContext = _membershipService.ValidateUser(user.Username, user.Password);
+                    var _userContext = _membershipService.ValidateUser(user.Username, user.Password);
 
                     if (_userContext.User != null)
                     {
-                        response = request.CreateResponse(HttpStatusCode.OK, new { success = true });
+                        response = request.CreateResponse(HttpStatusCode.OK, new {success = true});
                     }
                     else
                     {
-                        response = request.CreateResponse(HttpStatusCode.OK, new { success = false });
+                        response = request.CreateResponse(HttpStatusCode.OK, new {success = false});
                     }
                 }
                 else
-                    response = request.CreateResponse(HttpStatusCode.OK, new { success = false });
+                    response = request.CreateResponse(HttpStatusCode.OK, new {success = false});
 
                 return response;
             });
@@ -68,19 +63,19 @@ namespace HomeCinema.Web.Controllers
 
                 if (!ModelState.IsValid)
                 {
-                    response = request.CreateResponse(HttpStatusCode.BadRequest, new { success = false });
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, new {success = false});
                 }
                 else
                 {
-                    Entities.User _user = _membershipService.CreateUser(user.Username, user.Email, user.Password, new int[] { 1 });
+                    var _user = _membershipService.CreateUser(user.Username, user.Email, user.Password, new[] {1});
 
                     if (_user != null)
                     {
-                        response = request.CreateResponse(HttpStatusCode.OK, new { success = true });
+                        response = request.CreateResponse(HttpStatusCode.OK, new {success = true});
                     }
                     else
                     {
-                        response = request.CreateResponse(HttpStatusCode.OK, new { success = false });
+                        response = request.CreateResponse(HttpStatusCode.OK, new {success = false});
                     }
                 }
 

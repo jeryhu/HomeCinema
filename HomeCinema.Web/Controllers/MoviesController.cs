@@ -16,7 +16,6 @@ using HomeCinema.Web.Models;
 
 namespace HomeCinema.Web.Controllers
 {
-
     [Authorize(Roles = "Admin")]
     [RoutePrefix("api/movies")]
     public class MoviesController : ApiControllerBase
@@ -39,10 +38,10 @@ namespace HomeCinema.Web.Controllers
                 HttpResponseMessage response = null;
                 var movies = _moviesRepository.GetAll().OrderByDescending(m => m.ReleaseDate).Take(6).ToList();
 
-                IEnumerable<MovieViewModel> moviesVM =
+                var moviesVM =
                     Mapper.Map<IEnumerable<Movie>, IEnumerable<MovieViewModel>>(movies);
 
-                response = request.CreateResponse<IEnumerable<MovieViewModel>>(HttpStatusCode.OK, moviesVM);
+                response = request.CreateResponse(HttpStatusCode.OK, moviesVM);
 
                 return response;
             });
@@ -56,9 +55,9 @@ namespace HomeCinema.Web.Controllers
                 HttpResponseMessage response = null;
                 var movie = _moviesRepository.GetSingle(id);
 
-                MovieViewModel movieVM = Mapper.Map<Movie, MovieViewModel>(movie);
+                var movieVM = Mapper.Map<Movie, MovieViewModel>(movie);
 
-                response = request.CreateResponse<MovieViewModel>(HttpStatusCode.OK, movieVM);
+                response = request.CreateResponse(HttpStatusCode.OK, movieVM);
 
                 return response;
             });
@@ -68,21 +67,21 @@ namespace HomeCinema.Web.Controllers
         [Route("{page:int=0}/{pageSize=3}/{filter?}")]
         public HttpResponseMessage Get(HttpRequestMessage request, int? page, int? pageSize, string filter = null)
         {
-            int currentPage = page.Value;
-            int currentPageSize = pageSize.Value;
+            var currentPage = page.Value;
+            var currentPageSize = pageSize.Value;
 
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 List<Movie> movies = null;
-                int totalMovies = new int();
+                var totalMovies = new int();
 
                 if (!string.IsNullOrEmpty(filter))
                 {
                     movies = _moviesRepository.GetAll()
                         .OrderBy(m => m.Id)
                         .Where(m => m.Title.ToLower()
-                        .Contains(filter.ToLower().Trim()))
+                            .Contains(filter.ToLower().Trim()))
                         .ToList();
                 }
                 else
@@ -91,21 +90,21 @@ namespace HomeCinema.Web.Controllers
                 }
 
                 totalMovies = movies.Count();
-                movies = movies.Skip(currentPage * currentPageSize)
-                        .Take(currentPageSize)
-                        .ToList();
+                movies = movies.Skip(currentPage*currentPageSize)
+                    .Take(currentPageSize)
+                    .ToList();
 
-                IEnumerable<MovieViewModel> moviesVM = Mapper.Map<IEnumerable<Movie>, IEnumerable<MovieViewModel>>(movies);
+                var moviesVM = Mapper.Map<IEnumerable<Movie>, IEnumerable<MovieViewModel>>(movies);
 
-                PaginationSet<MovieViewModel> pagedSet = new PaginationSet<MovieViewModel>()
+                var pagedSet = new PaginationSet<MovieViewModel>
                 {
                     Page = currentPage,
                     TotalCount = totalMovies,
-                    TotalPages = (int)Math.Ceiling((decimal)totalMovies / currentPageSize),
+                    TotalPages = (int) Math.Ceiling((decimal) totalMovies/currentPageSize),
                     Items = moviesVM
                 };
 
-                response = request.CreateResponse<PaginationSet<MovieViewModel>>(HttpStatusCode.OK, pagedSet);
+                response = request.CreateResponse(HttpStatusCode.OK, pagedSet);
 
                 return response;
             });
@@ -131,16 +130,14 @@ namespace HomeCinema.Web.Controllers
                     // Read the MIME multipart asynchronously 
                     Request.Content.ReadAsMultipartAsync(multipartFormDataStreamProvider);
 
-                    string _localFileName = multipartFormDataStreamProvider
+                    var _localFileName = multipartFormDataStreamProvider
                         .FileData.Select(multiPartData => multiPartData.LocalFileName).FirstOrDefault();
 
                     // Create response
-                    FileUploadResult fileUploadResult = new FileUploadResult
+                    var fileUploadResult = new FileUploadResult
                     {
                         LocalFilePath = _localFileName,
-
                         FileName = Path.GetFileName(_localFileName),
-
                         FileLength = new FileInfo(_localFileName).Length
                     };
 
@@ -180,7 +177,7 @@ namespace HomeCinema.Web.Controllers
                         _moviesRepository.Edit(movieDb);
 
                         _unitOfWork.Commit();
-                        response = request.CreateResponse<MovieViewModel>(HttpStatusCode.OK, movie);
+                        response = request.CreateResponse(HttpStatusCode.OK, movie);
                     }
                 }
 
@@ -202,12 +199,12 @@ namespace HomeCinema.Web.Controllers
                 }
                 else
                 {
-                    Movie newMovie = new Movie();
+                    var newMovie = new Movie();
                     newMovie.UpdateMovie(movie);
 
-                    for (int i = 0; i < movie.NumberOfStocks; i++)
+                    for (var i = 0; i < movie.NumberOfStocks; i++)
                     {
-                        Stock stock = new Stock()
+                        var stock = new Stock
                         {
                             IsAvailable = true,
                             Movie = newMovie,
@@ -222,7 +219,7 @@ namespace HomeCinema.Web.Controllers
 
                     // Update view model
                     movie = Mapper.Map<Movie, MovieViewModel>(newMovie);
-                    response = request.CreateResponse<MovieViewModel>(HttpStatusCode.Created, movie);
+                    response = request.CreateResponse(HttpStatusCode.Created, movie);
                 }
 
                 return response;
