@@ -15,25 +15,27 @@ namespace HomeCinema.Web.App_Start
                 "~/Scripts/Vendors/modernizr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/vendors").Include(
-                "~/Scripts/Vendors/jquery.js",
-                "~/Scripts/Vendors/bootstrap.js",
-                "~/Scripts/Vendors/toastr.js",
-                "~/Scripts/Vendors/jquery.raty.js",
-                "~/Scripts/Vendors/respond.src.js",
-                "~/Scripts/Vendors/angular.js",
-                "~/Scripts/Vendors/angular-route.js",
-                "~/Scripts/Vendors/angular-cookies.js",
-                "~/Scripts/Vendors/angular-validator.js",
-                "~/Scripts/Vendors/angular-base64.js",
-                "~/Scripts/Vendors/angular-file-upload.js",
-                "~/Scripts/Vendors/angucomplete-alt.min.js",
-                "~/Scripts/Vendors/ui-bootstrap-tpls-0.13.1.js",
-                "~/Scripts/Vendors/underscore.js",
-                "~/Scripts/Vendors/raphael.js",
-                "~/Scripts/Vendors/morris.js",
-                "~/Scripts/Vendors/jquery.fancybox.js",
-                "~/Scripts/Vendors/jquery.fancybox-media.js",
-                "~/Scripts/Vendors/loading-bar.js"
+                "~/Scripts/vendor/jquery/dist/jquery.js",
+                "~/Scripts/vendor/bootstrap/dist/js/bootstrap.js",
+                "~/Scripts/vendor/toastr/toastr.js",
+                "~/Scripts/vendor/raty/lib/jquery.raty.js",
+                "~/Scripts/vendor/respond/dest/respond.src.js",
+                "~/Scripts/vendor/angular/angular.js",
+                "~/Scripts/vendor/angular-base64/angular-base64.js",
+                "~/Scripts/vendor/angular-file-upload/dist/angular-file-upload.min.js",
+                "~/Scripts/vendor/angucomplete-alt/dist/angucomplete-alt.min.js",
+                "~/Scripts/vendor/angular-route/angular-route.js",
+                "~/Scripts/vendor/angular-cookies/angular-cookies.js",
+                "~/Scripts/vendor/angular-bootstrap/ui-bootstrap.js",
+                "~/Scripts/vendor/angular-bootstrap/ui-bootstrap-tpls.js",
+                "~/Scripts/vendor/tg-angular-validator/dist/angular-validator.js",
+                "~/Scripts/vendor/raphael/raphael.js",
+                "~/Scripts/vendor/morris.js/morris.js",
+                "~/Scripts/vendor/underscore/underscore.js",
+                "~/Scripts/vendor/angular-loading-bar/src/loading-bar.js",
+                "~/Scripts/vendor/fancybox/source/jquery.fancybox.js",
+                "~/Scripts/vendor/fancybox/source/jquery.fancybox.pack.js",
+                "~/Scripts/vendor/fancybox/source/helpers/jquery.fancybox-media.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/spa").Include(
